@@ -89,6 +89,9 @@ autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ loc
 let xml_use_xhtml = 1
 autocmd FileType {xml,xslt} setlocal iskeyword=@,-,\:,48-57,_,128-167,224-235
 
+" Use xmledit ftplugin when editing HTML
+let xmledit_enable_html = 1
+
 " Interpret *.md files as Markdown (rather than modula2)
 au BufRead *.md			set ft=markdown
 

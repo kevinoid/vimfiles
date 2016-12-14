@@ -13,3 +13,6 @@
 [submodule "bundle/vim-es6"]
 	path = bundle/vim-es6
 	url = https://github.com/isRuslan/vim-es6.git
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less

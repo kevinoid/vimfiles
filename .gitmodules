@@ -28,3 +28,6 @@
 [submodule "bundle/vim-visual-increment"]
 	path = bundle/vim-visual-increment
 	url = https://github.com/triglav/vim-visual-increment.git
+[submodule "bundle/info.vim"]
+	path = bundle/info.vim
+	url = https://github.com/vim-scripts/info.vim

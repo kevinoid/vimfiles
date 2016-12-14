@@ -31,3 +31,6 @@
 [submodule "bundle/info.vim"]
 	path = bundle/info.vim
 	url = https://github.com/vim-scripts/info.vim
+[submodule "bundle/vim-gnupg"]
+	path = bundle/vim-gnupg
+	url = https://github.com/jamessan/vim-gnupg.git

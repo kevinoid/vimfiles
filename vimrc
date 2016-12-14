@@ -24,9 +24,9 @@ filetype plugin on
 let $MANOPT=""
 runtime! ftplugin/man.vim
 
-" Enable securemodeline plugin with verbose messages
-let g:secure_modelines_verbose=1
-runtime! bundle/securemodelines/plugin/securemodelines.vim
+" Use pathogen to load all bundles
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 " Use ripgrep or silver searcher for grep when available
 if executable('rg')

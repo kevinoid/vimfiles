@@ -16,3 +16,6 @@
 [submodule "bundle/vim-less"]
 	path = bundle/vim-less
 	url = https://github.com/groenewege/vim-less
+[submodule "bundle/vim-nginx"]
+	path = bundle/vim-nginx
+	url = https://github.com/fatih/vim-nginx.git

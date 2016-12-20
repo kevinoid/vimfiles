@@ -23,7 +23,8 @@ if has("autocmd")
 endif
 autocmd FileType cmake setlocal sts=2 sw=2 et
 autocmd FileType {css,less,sass,scss} setlocal sts=2 sw=2 et
-autocmd FileType {html,xhtml,xml,xslt} setlocal sts=2 sw=2 et indentexpr= ai
+" Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
+autocmd FileType {html,xhtml,xml,xslt} setlocal sts=2 sw=2 et indentkeys=!^F,o,O
 autocmd FileType {php,c,cpp,java} setlocal sts=4 sw=4 et
 autocmd FileType lua setlocal sts=8 sw=8
 autocmd Filetype markdown setlocal et tw=78 spell

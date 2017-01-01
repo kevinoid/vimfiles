@@ -33,6 +33,8 @@ autocmd FileType php setlocal indentexpr= cindent noet ts=4
 autocmd Filetype python setlocal sts=4 sw=4 et
 autocmd Filetype {json,javascript,ruby} setlocal sts=2 sw=2 et
 autocmd Filetype scala setlocal sts=2 sw=2 et tw=80 fo=croql
+" Treat /bin/sh as POSIX shell rather than legacy sh
+let g:is_posix=1
 autocmd Filetype sh setlocal sts=8 sw=8 noet
 " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
 autocmd Filetype yaml setlocal sts=2 sw=2 et indentkeys=!^F,o,O

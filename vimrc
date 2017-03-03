@@ -16,6 +16,17 @@ set tags=./tags,./TAGS,tags,TAGS;/
 let g:secure_modelines_verbose=1
 runtime! bundle/securemodelines/plugin/securemodelines.vim
 
+" Use ripgrep or silver searcher for grep when available
+if executable('rg')
+    set grepprg=rg\ -H\ --column\ $*
+    set grepformat=%f:%l:%c:%m
+elseif executable('ag')
+    " Note: Add /dev/null argument to get filenames in output.
+    " https://github.com/ggreer/the_silver_searcher/issues/972
+    set grepprg=ag\ --column\ $*\ /dev/null
+    set grepformat=%f:%l:%c:%m
+end
+
 " Turn on indenting
 set sts=4 sw=4
 if has("autocmd")

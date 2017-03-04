@@ -19,6 +19,11 @@ set spell spelllang=en_us
 " Enable filetype plugins
 filetype plugin on
 
+" Add the man plugin so that we can run :Man
+" Clear $MANOPT so no options which confuse man.vim get passed through
+let $MANOPT=""
+runtime! ftplugin/man.vim
+
 " Enable securemodeline plugin with verbose messages
 let g:secure_modelines_verbose=1
 runtime! bundle/securemodelines/plugin/securemodelines.vim

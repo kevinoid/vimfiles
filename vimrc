@@ -13,6 +13,9 @@ set visualbell	       " Use terminal visual bell in place of beep
 " https://stackoverflow.com/a/741486
 set tags=./tags,./TAGS,tags,TAGS;/
 
+" Turn on spell-checking by default
+set spell spelllang=en_us
+
 " Enable securemodeline plugin with verbose messages
 let g:secure_modelines_verbose=1
 runtime! bundle/securemodelines/plugin/securemodelines.vim

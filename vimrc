@@ -5,13 +5,16 @@ syntax on              " Turn on syntax hilighting
 set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.
 set incsearch          " Incremental search
-set modeline	       " Give me more modes
 set history=1000       " Remember what I've done for longer
 set visualbell	       " Use terminal visual bell in place of beep
 
 " Look for ctags above current directory
 " https://stackoverflow.com/a/741486
 set tags=./tags,./TAGS,tags,TAGS;/
+
+" Enable securemodeline plugin with verbose messages
+let g:secure_modelines_verbose=1
+runtime! bundle/securemodelines/plugin/securemodelines.vim
 
 " Turn on indenting
 set sts=4 sw=4

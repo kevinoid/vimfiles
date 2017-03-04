@@ -1,6 +1,7 @@
 " Local preferences file for Vim
 
 set background=dark    " Set highlighting for dark background
+colorscheme defaultish " Use a modified default colorscheme
 syntax on              " Turn on syntax hilighting
 set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.

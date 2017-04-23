@@ -68,6 +68,8 @@ autocmd FileType python setlocal makeprg=pylint3\ --reports=n\ --msg-template=\"
 autocmd FileType scala setlocal makeprg=(sbt\ -Dsbt.log.noformat=true\ compile\ \\\|\ sed\ '/\\[[[:alpha:]]\\+\\]\ \\+^$/{$p;x;d};x;1d;${x;p}'\ ;\ beep) errorformat=
     \%E\ %#[error]\ %f:%l:\ %m,%-Z\ %#[error]\ %p^,%+C\ %#[error]\ %.%#,
     \%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
+" makeprg for sh
+autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
 
 " Set keyword characters appropriately for XML and XSLT
 let xml_use_xhtml = 1

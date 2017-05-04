@@ -51,6 +51,8 @@ autocmd Filetype sh setlocal sts=8 sw=8 noet
 " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
 autocmd Filetype yaml setlocal sts=2 sw=2 et indentkeys=!^F,o,O
 
+" Special makeprg for CSS
+autocmd FileType css setlocal makeprg=csslint\ --quiet\ --format=compact\ % errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 " Special makeprg for html/xhtml/xml
 "autocmd FileType {html,xhtml} setlocal makeprg=curl\ -s\ -F\ level=error\ -F\ laxtype=yes\ -F\ out=gnu\ -F\ doc=@%\ http://localhost:8888 errorformat="\"%f\":%l.%c-%m"
 autocmd FileType {html,xhtml,xml} setlocal makeprg=xmllint\ --noout\ --valid\ % errorformat=%A%f:%l:\ %m,%-C%s,%-Z%p^

@@ -60,7 +60,8 @@ autocmd FileType {html,xhtml,xml} setlocal makeprg=xmllint\ --noout\ --valid\ % 
 "autocmd FileType javascript setlocal makeprg=jslint\ % errorformat=%f:%l:%c:\ error:\ %m,%f:%l:\ %m,%f:\ line\ %l\\,\ col\ %c\\,\ %m
 autocmd FileType javascript setlocal makeprg=jscheck\ % "errorformat=%f:%l:%c:%m
 " Special makeprg for php
-autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"
+autocmd FileType php setlocal makeprg=phpcs\ -q\ --report=emacs\ %
+"autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"
 " Special makeprg for python
 autocmd FileType python setlocal makeprg=pylint3\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p errorformat=%f:%l:\ %m
 " Special makeprg for scala

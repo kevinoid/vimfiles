@@ -73,6 +73,8 @@ autocmd FileType scala setlocal makeprg=(sbt\ -Dsbt.log.noformat=true\ compile\ 
     \%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
 " makeprg for sh
 autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ local.*SC2039
+" makeprg for yaml
+autocmd Filetype yaml setlocal makeprg=yamllint\ -fparsable\ %
 
 " Set keyword characters appropriately for XML and XSLT
 let xml_use_xhtml = 1

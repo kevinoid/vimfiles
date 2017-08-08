@@ -59,6 +59,8 @@ autocmd FileType {html,xhtml,xml} setlocal makeprg=xmllint\ --noout\ --valid\ % 
 " Special makeprg for javascript
 "autocmd FileType javascript setlocal makeprg=jslint\ % errorformat=%f:%l:%c:\ error:\ %m,%f:%l:\ %m,%f:\ line\ %l\\,\ col\ %c\\,\ %m
 autocmd FileType javascript setlocal makeprg=jscheck\ % "errorformat=%f:%l:%c:%m
+" Special makeprg for perl
+autocmd FileType perl setlocal makeprg=perlcritic\ --verbose\ 1\ %
 " Special makeprg for php
 autocmd FileType php setlocal makeprg=phpcs\ -q\ --report=emacs\ %
 "autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"

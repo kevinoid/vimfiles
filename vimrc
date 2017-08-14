@@ -1,5 +1,8 @@
 " Local preferences file for Vim
 
+" Start with system defaults (see :help defaults.vim)
+source $VIMRUNTIME/defaults.vim
+
 set background=dark    " Set highlighting for dark background
 colorscheme defaultish " Use a modified default colorscheme
 syntax on              " Turn on syntax hilighting
@@ -7,6 +10,7 @@ set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.
 set incsearch          " Incremental search
 set history=1000       " Remember what I've done for longer
+set mouse=             " Disable mouse, which I don't often use
 set visualbell	       " Use terminal visual bell in place of beep
 
 " Look for ctags above current directory

@@ -1,5 +1,8 @@
 " Local preferences file for Vim
 
+" Start with system defaults (see :help defaults.vim)
+source $VIMRUNTIME/defaults.vim
+
 set background=dark    " Set highlighting for dark background
 colorscheme defaultish " Use a modified default colorscheme
 syntax on              " Turn on syntax hilighting

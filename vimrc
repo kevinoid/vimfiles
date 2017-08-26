@@ -18,6 +18,8 @@ set visualbell	       " Use terminal visual bell in place of beep
 set tags=./tags,./TAGS,tags,TAGS;/
 
 " Enable securemodeline plugin with verbose messages
+" Disable builtin modeline support to avoid securemodelines warning
+set nomodeline
 let g:secure_modelines_verbose=1
 runtime! bundle/securemodelines/plugin/securemodelines.vim
 

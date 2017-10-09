@@ -85,7 +85,12 @@ if has("autocmd")
     autocmd FileType php setlocal makeprg=phpcs\ -q\ --report=emacs\ %
     "autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"
     " Special makeprg for python
-    autocmd FileType python setlocal makeprg=pylint3\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p errorformat=%f:%l:\ %m
+    function! s:SetPythonMakeprg()
+        let pylint = getline(1) =~ 'python3' ? 'pylint3' : 'pylint'
+        let &l:makeprg = pylint . ' --reports=n --msg-template="{path}:{line}: {msg_id} {symbol}, {obj} {msg}" %:p'
+        setlocal errorformat=%f:%l:\ %m
+    endfunction
+    autocmd FileType python call s:SetPythonMakeprg()
     " Special makeprg for scala
     " Note1: sed is required because %s matches anything, so there is no way to
     "        distinguish source code lines from multiline error messages without

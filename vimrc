@@ -1,7 +1,9 @@
 " Local preferences file for Vim
 
-" Start with system defaults (see :help defaults.vim)
-source $VIMRUNTIME/defaults.vim
+" Start with system defaults, if they exist (see :help defaults.vim in Vim 8+)
+if !empty(glob($VIMRUNTIME.'/defaults.vim'))
+    source $VIMRUNTIME/defaults.vim
+endif
 
 set background=dark    " Set highlighting for dark background
 colorscheme defaultish " Use a modified default colorscheme
@@ -44,17 +46,17 @@ elseif executable('ag')
 end
 
 " Turn on indenting
-set sts=4 sw=4
+set softtabstop=4 shiftwidth=4
 filetype indent on
 
 " Treat /bin/sh as POSIX shell rather than legacy sh
 let g:is_posix=1
 
 " Use xmledit ftplugin when editing HTML
-let xml_use_xhtml = 1
-let xmledit_enable_html = 1
+let g:xml_use_xhtml = 1
+let g:xmledit_enable_html = 1
 
-if has("autocmd")
+if has('autocmd')
     autocmd FileType cmake setlocal sts=2 sw=2 et
     autocmd FileType {css,less,sass,scss} setlocal sts=2 sw=2 et
     " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
@@ -86,8 +88,8 @@ if has("autocmd")
     "autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"
     " Special makeprg for python
     function! s:SetPythonMakeprg()
-        let pylint = getline(1) =~ 'python3' ? 'pylint3' : 'pylint'
-        let &l:makeprg = pylint . ' --reports=n --msg-template="{path}:{line}: {msg_id} {symbol}, {obj} {msg}" %:p'
+        let l:pylint = getline(1) =~# 'python3' ? 'pylint3' : 'pylint'
+        let &l:makeprg = l:pylint . ' --reports=n --msg-template="{path}:{line}: {msg_id} {symbol}, {obj} {msg}" %:p'
         setlocal errorformat=%f:%l:\ %m
     endfunction
     autocmd FileType python call s:SetPythonMakeprg()
@@ -100,6 +102,8 @@ if has("autocmd")
 	\%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
     " makeprg for sh
     autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ local.*SC2039
+    " makeprg for vim
+    autocmd FileType vim setlocal makeprg=vint\ -s\ %
     " makeprg for yaml
     autocmd Filetype yaml setlocal makeprg=yamllint\ -fparsable\ %
 
@@ -107,28 +111,28 @@ if has("autocmd")
     autocmd FileType {xml,xslt} setlocal iskeyword=@,-,\:,48-57,_,128-167,224-235
 
     " Interpret *.md files as Markdown (rather than modula2)
-    au BufRead *.md			set ft=markdown
+    autocmd BufRead *.md			set ft=markdown
 
     " Interpret Jekyll files as Liquid rather than Markdown
     " This way the YAML frontmatter and liquid tags are highlighted correctly
-    au BufRead */_drafts/*.markdown	set ft=liquid
-    au BufRead */_posts/*.markdown	set ft=liquid
+    autocmd BufRead */_drafts/*.markdown	set ft=liquid
+    autocmd BufRead */_posts/*.markdown	set ft=liquid
 
     " Interpret JavaScript modules as JavaScript
-    au BufRead *.jsm		set ft=javascript
+    autocmd BufRead *.jsm		set ft=javascript
 
     " Interpret Simple Build Tool files as Scala
-    au BufRead *.sbt		set ft=scala
+    autocmd BufRead *.sbt		set ft=scala
 
     " Set appropriate defaults for composing mail in mutt
-    au BufRead /tmp/mutt*		set ft=mail
-    au BufRead /tmp/mutt*		setlocal tw=70
-    au BufRead /tmp/mutt* normal :g/^> -- $/,/^$/-1d^M/^$^M^L
+    autocmd BufRead /tmp/mutt*		set ft=mail
+    autocmd BufRead /tmp/mutt*		setlocal tw=70
+    autocmd BufRead /tmp/mutt* normal :g/^> -- $/,/^$/-1d^M/^$^M^L
 
     " Update vimStartup autocmd group to exclude commits
     " https://github.com/vim/vim/commit/9a48961d8bd7ffea14330b9b0181a6cdbe9288f7
     augroup vimStartup
-        au!
+        autocmd!
 
         " When editing a file, always jump to the last known cursor position.
         " Don't do it when the position is invalid, when inside an event handler

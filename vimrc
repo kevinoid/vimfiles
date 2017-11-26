@@ -1,7 +1,9 @@
 " Local preferences file for Vim
 
-" Start with system defaults (see :help defaults.vim)
-source $VIMRUNTIME/defaults.vim
+" Start with system defaults, if they exist (see :help defaults.vim in Vim 8+)
+if !empty(glob($VIMRUNTIME.'/defaults.vim'))
+    source $VIMRUNTIME/defaults.vim
+endif
 
 set background=dark    " Set highlighting for dark background
 colorscheme defaultish " Use a modified default colorscheme

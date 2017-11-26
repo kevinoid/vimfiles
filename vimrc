@@ -92,6 +92,8 @@ if has("autocmd")
 	\%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
     " makeprg for sh
     autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ local.*SC2039
+    " makeprg for vim
+    autocmd FileType vim setlocal makeprg=vint\ -s\ %
     " makeprg for yaml
     autocmd Filetype yaml setlocal makeprg=yamllint\ -fparsable\ %
 

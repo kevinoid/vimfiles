@@ -27,7 +27,7 @@ filetype plugin on
 
 " Add the man plugin so that we can run :Man
 " Clear $MANOPT so no options which confuse man.vim get passed through
-let $MANOPT=""
+let $MANOPT=''
 runtime! ftplugin/man.vim
 
 " Use pathogen to load all bundles

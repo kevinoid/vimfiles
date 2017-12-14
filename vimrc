@@ -8,6 +8,8 @@ endif
 set background=dark    " Set highlighting for dark background
 colorscheme defaultish " Use a modified default colorscheme
 syntax on              " Turn on syntax hilighting
+set nofixendofline     " Don't add <EOL> at end of files lacking them
+                       " It adds too much churn in version control
 set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.
 set incsearch          " Incremental search

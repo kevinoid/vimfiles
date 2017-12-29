@@ -43,3 +43,6 @@
 [submodule "bundle/vim-dirdiff"]
 	path = bundle/vim-dirdiff
 	url = https://github.com/will133/vim-dirdiff.git
+[submodule "bundle/vim-csharp"]
+	path = bundle/vim-csharp
+	url = https://github.com/OrangeT/vim-csharp.git

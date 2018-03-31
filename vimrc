@@ -106,6 +106,8 @@ if has('autocmd')
     autocmd FileType scala setlocal makeprg=(sbt\ -Dsbt.log.noformat=true\ compile\ \\\|\ sed\ '/\\[[[:alpha:]]\\+\\]\ \\+^$/{$p;x;d};x;1d;${x;p}'\ ;\ beep) errorformat=
 	\%E\ %#[error]\ %f:%l:\ %m,%-Z\ %#[error]\ %p^,%+C\ %#[error]\ %.%#,
 	\%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
+    " makeprg for scss
+    autocmd FileType scss setlocal makeprg=sass-lint\ -v\ --format\ unix\ %
     " makeprg for sh
     autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ local.*SC2039
     " makeprg for vim

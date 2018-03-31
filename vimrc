@@ -1,5 +1,9 @@
 " Local preferences file for Vim
 
+" Path to directory containing this file (~/.vim or vimfiles)
+" See https://superuser.com/a/120011/141375
+let s:vimhome=expand('<sfile>:p:h')
+
 " Start with system defaults, if they exist (see :help defaults.vim in Vim 8+)
 if !empty(glob($VIMRUNTIME.'/defaults.vim'))
     source $VIMRUNTIME/defaults.vim
@@ -16,6 +20,14 @@ set incsearch          " Incremental search
 set history=1000       " Remember what I've done for longer
 set mouse=             " Disable mouse, which I don't often use
 set visualbell	       " Use terminal visual bell in place of beep
+
+" Save swap and backup files in vimhome
+" Saving alongside the edited file allows sharing between users, but has more
+" significant disadvantages for my most common uses, where it causes problems
+" with build systems that rebuild on file changes (especially XSDs in ASP.NET
+" Web Site Projects) and lots of unnecessary clutter on unclean vim exit.
+let &backupdir=s:vimhome . '/backup/'
+let &directory=s:vimhome . '/swap//'
 
 " Look for ctags above current directory
 " https://stackoverflow.com/a/741486

@@ -49,6 +49,8 @@ let g:is_posix=1
 let g:xml_use_xhtml = 1
 
 if has('autocmd')
+    " Set bzr commit line length to match git convention of 72
+    autocmd FileType bzr setlocal tw=72
     autocmd FileType cmake setlocal sts=2 sw=2 et
     autocmd FileType {css,less,sass,scss} setlocal sts=2 sw=2 et
     " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)

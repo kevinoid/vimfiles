@@ -72,6 +72,9 @@ if has('autocmd')
     autocmd Filetype markdown setlocal et tw=78 spell
     autocmd Filetype make setlocal sts=8 sw=8 noet
     autocmd FileType php setlocal indentexpr= cindent noet ts=4
+    " Note: PS1 indentation size follows PowerShell ISE convention.
+    " https://poshcode.gitbooks.io/powershell-practice-and-style/Style-Guide/Code-Layout-and-Formatting.html#indentation
+    autocmd FileType ps1 setlocal sts=4 sw=4 et ignorecase
     autocmd Filetype python setlocal sts=4 sw=4 et
     autocmd Filetype {json,javascript,ruby} setlocal sts=2 sw=2 et
     autocmd Filetype scala setlocal sts=2 sw=2 et tw=80 fo=croql

@@ -135,6 +135,10 @@ if has('autocmd')
     " Interpret Simple Build Tool files as Scala
     autocmd BufRead *.sbt		set ft=scala
 
+    " Recognize *.wsdl files as XML
+    " Until https://github.com/vim/vim/pull/3281 is released
+    autocmd BufRead *.wsdl		set ft=xml
+
     " Set appropriate defaults for composing mail in mutt
     autocmd BufRead /tmp/mutt*		set ft=mail
     autocmd BufRead /tmp/mutt*		setlocal tw=70

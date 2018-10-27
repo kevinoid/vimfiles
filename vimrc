@@ -27,7 +27,7 @@ set visualbell	       " Use terminal visual bell in place of beep
 " with build systems that rebuild on file changes (especially XSDs in ASP.NET
 " Web Site Projects) and lots of unnecessary clutter on unclean vim exit.
 let &backupdir=s:vimhome . '/backup/'
-let &directory=s:vimhome . '/swap//'
+let &directory=s:vimhome . '/swap//'	" // to build swap path from file path
 
 " Look for ctags above current directory
 " https://stackoverflow.com/a/741486

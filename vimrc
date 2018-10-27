@@ -66,6 +66,10 @@ filetype indent on
 " Treat /bin/sh as POSIX shell rather than legacy sh
 let g:is_posix=1
 
+" Use 2-space indent for Markdown lists
+" https://github.com/plasticboy/vim-markdown/#adjust-new-list-item-indent
+let g:vim_markdown_new_list_item_indent = 2
+
 " Use xmledit ftplugin when editing HTML
 let g:xml_use_xhtml = 1
 let g:xmledit_enable_html = 1
@@ -132,7 +136,8 @@ if has('autocmd')
     autocmd FileType {xml,xslt} setlocal iskeyword=@,-,\:,48-57,_,128-167,224-235
 
     " Interpret *.md files as Markdown (rather than modula2)
-    autocmd BufRead *.md			set ft=markdown
+    " And expand folds on open: https://stackoverflow.com/a/8316817
+    autocmd BufRead *.md			set ft=markdown | normal zR
 
     " Interpret Jekyll files as Liquid rather than Markdown
     " This way the YAML frontmatter and liquid tags are highlighted correctly

@@ -214,3 +214,15 @@ set statusline+=%=%(%l,%c%V\ %=\ %P%)
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
+
+" Syntastic checker configuration
+let g:syntastic_html_checkers = ['validator']
+let g:syntastic_html_validator_api = 'http://localhost:8888/'
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_closurecompiler_script = 'google-closure-compiler'
+let g:syntastic_sass_checkers = ['sass_lint']
+let g:syntastic_scss_checkers = ['sass_lint']
+let g:syntastic_typescript_checkers = ['eslint', 'tsuquyomi']
+let g:syntastic_vim_checkers = ['vimlint', 'vint']
+let g:syntastic_vim_vint_args = '-s'
+let g:syntastic_yaml_checkers = ['yamllint']

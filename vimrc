@@ -201,3 +201,16 @@ let g:markdown_fenced_languages = [
    \ 'xhtml',
    \ 'yaml'
    \ ]
+
+" Add Syntastic to statusline, simulating default around it
+" https://unix.stackexchange.com/a/243667
+set statusline=%f\ %h%w%m%r\ 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set statusline+=%=%(%l,%c%V\ %=\ %P%)
+
+" Syntastic configuration
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_wq = 0

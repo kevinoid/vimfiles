@@ -76,108 +76,6 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:xml_use_xhtml = 1
 let g:xmledit_enable_html = 1
 
-if has('autocmd')
-    " Set bzr commit line length to match git convention of 72
-    autocmd FileType bzr setlocal tw=72
-    autocmd FileType cmake setlocal sts=2 sw=2 et
-    autocmd FileType {css,less,sass,scss} setlocal sts=2 sw=2 et
-    " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
-    autocmd FileType {html,xhtml,xml,xslt} setlocal sts=2 sw=2 et indentkeys=!^F,o,O
-    autocmd FileType {php,c,cpp,java} setlocal sts=4 sw=4 et
-    autocmd FileType lua setlocal sts=8 sw=8
-    autocmd Filetype markdown setlocal et tw=78 spell
-    autocmd Filetype make setlocal sts=8 sw=8 noet
-    autocmd FileType php setlocal indentexpr= cindent noet ts=4
-    " Note: PS1 indentation size follows PowerShell ISE convention.
-    " https://poshcode.gitbooks.io/powershell-practice-and-style/Style-Guide/Code-Layout-and-Formatting.html#indentation
-    autocmd FileType ps1 setlocal sts=4 sw=4 et ignorecase
-    autocmd Filetype python setlocal sts=4 sw=4 et
-    autocmd Filetype {json,javascript,ruby} setlocal sts=2 sw=2 et
-    autocmd Filetype scala setlocal sts=2 sw=2 et tw=80 fo=croql
-    autocmd Filetype sh setlocal sts=8 sw=8 noet
-    " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
-    autocmd Filetype yaml setlocal sts=2 sw=2 et indentkeys=!^F,o,O
-
-    " Special makeprg for CSS
-    autocmd FileType css setlocal makeprg=csslint\ --quiet\ --format=compact\ % errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
-    " Special makeprg for html/xhtml/xml
-    "autocmd FileType {html,xhtml} setlocal makeprg=curl\ -s\ -F\ level=error\ -F\ laxtype=yes\ -F\ out=gnu\ -F\ doc=@%\ http://localhost:8888 errorformat="\"%f\":%l.%c-%m"
-    autocmd FileType {html,xhtml,xml} setlocal makeprg=xmllint\ --noout\ --valid\ % errorformat=%A%f:%l:\ %m,%-C%s,%-Z%p^
-    " Special makeprg for javascript
-    "autocmd FileType javascript setlocal makeprg=jslint\ % errorformat=%f:%l:%c:\ error:\ %m,%f:%l:\ %m,%f:\ line\ %l\\,\ col\ %c\\,\ %m
-    autocmd FileType javascript setlocal makeprg=jscheck\ % "errorformat=%f:%l:%c:%m
-    " Special makeprg for perl
-    autocmd FileType perl setlocal makeprg=perlcritic\ --verbose\ 1\ %
-    " Special makeprg for php
-    autocmd FileType php setlocal makeprg=phpcs\ -q\ --report=emacs\ %
-    "autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"
-    " Special makeprg for python
-    function! s:SetPythonMakeprg()
-        let l:pylint = getline(1) =~# 'python3' ? 'pylint3' : 'pylint'
-        let &l:makeprg = l:pylint . ' --reports=n --msg-template="{path}:{line}: {msg_id} {symbol}, {obj} {msg}" %:p'
-        setlocal errorformat=%f:%l:\ %m
-    endfunction
-    autocmd FileType python call s:SetPythonMakeprg()
-    " Special makeprg for scala
-    " Note1: sed is required because %s matches anything, so there is no way to
-    "        distinguish source code lines from multiline error messages without
-    "        enumerating all of them
-    autocmd FileType scala setlocal makeprg=(sbt\ -Dsbt.log.noformat=true\ compile\ \\\|\ sed\ '/\\[[[:alpha:]]\\+\\]\ \\+^$/{$p;x;d};x;1d;${x;p}'\ ;\ beep) errorformat=
-	\%E\ %#[error]\ %f:%l:\ %m,%-Z\ %#[error]\ %p^,%+C\ %#[error]\ %.%#,
-	\%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
-    " makeprg for scss
-    autocmd FileType scss setlocal makeprg=sass-lint\ -v\ --format\ unix\ %
-    " makeprg for sh
-    autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ local.*SC2039
-    " makeprg for vim
-    autocmd FileType vim setlocal makeprg=vint\ -s\ %
-    " makeprg for yaml
-    autocmd Filetype yaml setlocal makeprg=yamllint\ -fparsable\ %
-
-    " Set keyword characters appropriately for XML and XSLT
-    autocmd FileType {xml,xslt} setlocal iskeyword=@,-,\:,48-57,_,128-167,224-235
-
-    " Interpret *.md files as Markdown (rather than modula2)
-    " And expand folds on open: https://stackoverflow.com/a/8316817
-    autocmd BufRead *.md			set ft=markdown | normal zR
-
-    " Interpret Jekyll files as Liquid rather than Markdown
-    " This way the YAML frontmatter and liquid tags are highlighted correctly
-    autocmd BufRead */_drafts/*.markdown	set ft=liquid
-    autocmd BufRead */_posts/*.markdown	set ft=liquid
-
-    " Interpret JavaScript modules as JavaScript
-    autocmd BufRead *.jsm		set ft=javascript
-
-    " Interpret Simple Build Tool files as Scala
-    autocmd BufRead *.sbt		set ft=scala
-
-    " Recognize *.wsdl files as XML
-    " Until https://github.com/vim/vim/pull/3281 is released
-    autocmd BufRead *.wsdl		set ft=xml
-
-    " Set appropriate defaults for composing mail in mutt
-    autocmd BufRead /tmp/mutt*		set ft=mail
-    autocmd BufRead /tmp/mutt*		setlocal tw=70
-    autocmd BufRead /tmp/mutt* normal :g/^> -- $/,/^$/-1d^M/^$^M^L
-
-    " Update vimStartup autocmd group to exclude commits
-    " https://github.com/vim/vim/commit/9a48961d8bd7ffea14330b9b0181a6cdbe9288f7
-    augroup vimStartup
-        autocmd!
-
-        " When editing a file, always jump to the last known cursor position.
-        " Don't do it when the position is invalid, when inside an event handler
-        " (happens when dropping a file on gvim) and for a commit message (it's
-        " likely a different one than last time).
-        autocmd BufReadPost *
-          \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-          \ |   exe "normal! g`\""
-          \ | endif
-    augroup END
-
-endif
-
 " Enable language highlighting for code blocks in Markdown
 " Note:  Applying all syntaxes caused massive errors, not sure why...
 "let g:markdown_fenced_languages2 = map(globpath(&rtp, 'syntax/*.vim', 0, 1), 'substitute(v:val, ''.*/\(.*\)\.vim$'', ''\1'', '''')')
@@ -226,3 +124,90 @@ let g:syntastic_typescript_checkers = ['eslint', 'tsuquyomi']
 let g:syntastic_vim_checkers = ['vimlint', 'vint']
 let g:syntastic_vim_vint_args = '-s'
 let g:syntastic_yaml_checkers = ['yamllint']
+
+if !has('autocmd')
+    finish
+endif
+
+augroup fileTypeIndent
+    autocmd!
+
+    " Set bzr commit line length to match git convention of 72
+    autocmd FileType bzr setlocal tw=72
+    autocmd FileType cmake setlocal sts=2 sw=2 et
+    autocmd FileType {css,less,sass,scss} setlocal sts=2 sw=2 et
+    autocmd FileType {html,xhtml,xml,xslt} setlocal sts=2 sw=2 et
+    autocmd FileType {php,c,cpp,java} setlocal sts=4 sw=4 et
+    autocmd FileType lua setlocal sts=8 sw=8
+    autocmd FileType markdown setlocal et tw=78
+    autocmd FileType make setlocal sts=8 sw=8 noet
+    autocmd FileType php setlocal indentexpr= cindent noet ts=4
+    " Note: PS1 indentation size follows PowerShell ISE convention.
+    " https://poshcode.gitbooks.io/powershell-practice-and-style/Style-Guide/Code-Layout-and-Formatting.html#indentation
+    autocmd FileType ps1 setlocal sts=4 sw=4 et
+    autocmd FileType python setlocal sts=4 sw=4 et
+    autocmd FileType {json,javascript,ruby} setlocal sts=2 sw=2 et
+    autocmd FileType scala setlocal sts=2 sw=2 et tw=80
+    autocmd FileType sh setlocal sts=8 sw=8 noet
+    autocmd FileType vim setlocal sts=4 sw=4 et
+    autocmd FileType yaml setlocal sts=2 sw=2 et
+augroup END
+
+augroup fileTypeSettings
+    autocmd!
+
+    " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
+    autocmd FileType {html,xhtml,xml,xslt,yaml} setlocal indentkeys=!^F,o,O
+    " Enable spellcheck and expand folds on open
+    " https://stackoverflow.com/a/8316817
+    autocmd FileType markdown setlocal spell | normal zR
+    " Case is rarely significant in PowerShell.  Ignore by default.
+    autocmd FileType ps1 setlocal ignorecase
+    autocmd FileType scala setlocal fo=croql
+    " Set keyword characters appropriately for XML and XSLT
+    autocmd FileType {xml,xslt} setlocal iskeyword=@,-,\:,48-57,_,128-167,224-235
+augroup END
+
+augroup pathToFileType
+    autocmd!
+
+    " Interpret *.md files as Markdown (rather than modula2)
+    " This was fixed in commit 7d76c804a first included in 7.4.480
+    if !has('patch-7.4.480')
+        autocmd BufRead *.md set ft=markdown
+    endif
+
+    " Interpret Jekyll files as Liquid rather than Markdown
+    " This way the YAML frontmatter and liquid tags are highlighted correctly
+    autocmd BufRead */_drafts/*.markdown set ft=liquid
+    autocmd BufRead */_posts/*.markdown set ft=liquid
+
+    " Interpret JavaScript modules as JavaScript
+    autocmd BufRead *.jsm set ft=javascript
+
+    " Recognize *.wsdl files as XML
+    " https://github.com/vim/vim/pull/3281, commit d473c8c10, release 8.1.0273
+    if !has('patch-8.1.0273')
+        autocmd BufRead *.wsdl set ft=xml
+    endif
+
+    " Set appropriate defaults for composing mail in mutt
+    autocmd BufRead /tmp/mutt* set ft=mail
+    autocmd BufRead /tmp/mutt* setlocal tw=70
+    autocmd BufRead /tmp/mutt* normal :g/^> -- $/,/^$/-1d^M/^$^M^L
+augroup END
+
+" Update vimStartup autocmd group to exclude commits
+" https://github.com/vim/vim/commit/9a48961d8bd7ffea14330b9b0181a6cdbe9288f7
+augroup vimStartup
+    autocmd!
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid, when inside an event handler
+    " (happens when dropping a file on gvim) and for a commit message (it's
+    " likely a different one than last time).
+    autocmd BufReadPost *
+      \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ |   exe "normal! g`\""
+      \ | endif
+augroup END

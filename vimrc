@@ -82,42 +82,6 @@ if has('autocmd')
     " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
     autocmd Filetype yaml setlocal sts=2 sw=2 et indentkeys=!^F,o,O
 
-    " Special makeprg for CSS
-    autocmd FileType css setlocal makeprg=csslint\ --quiet\ --format=compact\ % errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
-    " Special makeprg for html/xhtml/xml
-    "autocmd FileType {html,xhtml} setlocal makeprg=curl\ -s\ -F\ level=error\ -F\ laxtype=yes\ -F\ out=gnu\ -F\ doc=@%\ http://localhost:8888 errorformat="\"%f\":%l.%c-%m"
-    autocmd FileType {html,xhtml,xml} setlocal makeprg=xmllint\ --noout\ --valid\ % errorformat=%A%f:%l:\ %m,%-C%s,%-Z%p^
-    " Special makeprg for javascript
-    "autocmd FileType javascript setlocal makeprg=jslint\ % errorformat=%f:%l:%c:\ error:\ %m,%f:%l:\ %m,%f:\ line\ %l\\,\ col\ %c\\,\ %m
-    autocmd FileType javascript setlocal makeprg=jscheck\ % "errorformat=%f:%l:%c:%m
-    " Special makeprg for perl
-    autocmd FileType perl setlocal makeprg=perlcritic\ --verbose\ 1\ %
-    " Special makeprg for php
-    autocmd FileType php setlocal makeprg=phpcs\ -q\ --report=emacs\ %
-    "autocmd FileType php setlocal makeprg=php\ --syntax-check\ % errorformat="%m in %f on line %l"
-    " Special makeprg for python
-    function! s:SetPythonMakeprg()
-        let l:pylint = getline(1) =~# 'python3' ? 'pylint3' : 'pylint'
-        let &l:makeprg = l:pylint . ' --reports=n --msg-template="{path}:{line}: {msg_id} {symbol}, {obj} {msg}" %:p'
-        setlocal errorformat=%f:%l:\ %m
-    endfunction
-    autocmd FileType python call s:SetPythonMakeprg()
-    " Special makeprg for scala
-    " Note1: sed is required because %s matches anything, so there is no way to
-    "        distinguish source code lines from multiline error messages without
-    "        enumerating all of them
-    autocmd FileType scala setlocal makeprg=(sbt\ -Dsbt.log.noformat=true\ compile\ \\\|\ sed\ '/\\[[[:alpha:]]\\+\\]\ \\+^$/{$p;x;d};x;1d;${x;p}'\ ;\ beep) errorformat=
-	\%E\ %#[error]\ %f:%l:\ %m,%-Z\ %#[error]\ %p^,%+C\ %#[error]\ %.%#,
-	\%W\ %#[warn]\ %f:%l:\ %m,%-Z\ %#[warn]\ %p^,%+C\ %#[warn]\ %.%#
-    " makeprg for scss
-    autocmd FileType scss setlocal makeprg=sass-lint\ -v\ --format\ unix\ %
-    " makeprg for sh
-    autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %\ \\\|\ grep\ -v\ local.*SC2039
-    " makeprg for vim
-    autocmd FileType vim setlocal makeprg=vint\ -s\ %
-    " makeprg for yaml
-    autocmd Filetype yaml setlocal makeprg=yamllint\ -fparsable\ %
-
     " Set keyword characters appropriately for XML and XSLT
     autocmd FileType {xml,xslt} setlocal iskeyword=@,-,\:,48-57,_,128-167,224-235
 

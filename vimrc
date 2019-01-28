@@ -44,12 +44,6 @@ filetype plugin on
 let $MANOPT=''
 runtime! ftplugin/man.vim
 
-" Use pathogen to load all bundles
-" Note: Consider switching to native packages when rarely using Vim < 7.4.1486
-"       by moving bundle/ to pack/all/start/  See :help packages
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-
 " Use ripgrep or silver searcher for grep when available
 if executable('rg')
     set grepprg=rg\ -H\ --column\ $*

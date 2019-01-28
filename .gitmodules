@@ -1,92 +1,92 @@
-[submodule "bundle/securemodelines"]
-	path = bundle/securemodelines
+[submodule "pack/all/start/securemodelines"]
+	path = pack/all/start/securemodelines
 	url = https://github.com/ciaranm/securemodelines.git
 	branch = master
-[submodule "bundle/vim-pathogen"]
-	path = bundle/vim-pathogen
+[submodule "pack/all/start/vim-pathogen"]
+	path = pack/all/start/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 	branch = master
-[submodule "bundle/editorconfig-vim"]
-	path = bundle/editorconfig-vim
+[submodule "pack/all/start/editorconfig-vim"]
+	path = pack/all/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
 	branch = master
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
+[submodule "pack/all/start/vim-coffee-script"]
+	path = pack/all/start/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
 	branch = master
-[submodule "bundle/vim-es6"]
-	path = bundle/vim-es6
+[submodule "pack/all/start/vim-es6"]
+	path = pack/all/start/vim-es6
 	url = https://github.com/isRuslan/vim-es6.git
 	branch = master
-[submodule "bundle/vim-less"]
-	path = bundle/vim-less
+[submodule "pack/all/start/vim-less"]
+	path = pack/all/start/vim-less
 	url = https://github.com/groenewege/vim-less
 	branch = master
-[submodule "bundle/vim-nginx"]
-	path = bundle/vim-nginx
+[submodule "pack/all/start/vim-nginx"]
+	path = pack/all/start/vim-nginx
 	url = https://github.com/fatih/vim-nginx.git
 	branch = master
-[submodule "bundle/vim-scala"]
-	path = bundle/vim-scala
+[submodule "pack/all/start/vim-scala"]
+	path = pack/all/start/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
 	branch = master
-[submodule "bundle/xmledit"]
-	path = bundle/xmledit
+[submodule "pack/all/start/xmledit"]
+	path = pack/all/start/xmledit
 	url = https://github.com/sukima/xmledit.git
 	branch = master
-[submodule "bundle/vim-visual-increment"]
-	path = bundle/vim-visual-increment
+[submodule "pack/all/start/vim-visual-increment"]
+	path = pack/all/start/vim-visual-increment
 	url = https://github.com/triglav/vim-visual-increment.git
 	branch = master
-[submodule "bundle/info.vim"]
-	path = bundle/info.vim
+[submodule "pack/all/start/info.vim"]
+	path = pack/all/start/info.vim
 	url = https://github.com/vim-scripts/info.vim
 	branch = master
-[submodule "bundle/vim-gnupg"]
-	path = bundle/vim-gnupg
+[submodule "pack/all/start/vim-gnupg"]
+	path = pack/all/start/vim-gnupg
 	url = https://github.com/jamessan/vim-gnupg.git
 	branch = master
-[submodule "bundle/vim-toml"]
-	path = bundle/vim-toml
+[submodule "pack/all/start/vim-toml"]
+	path = pack/all/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
 	branch = master
-[submodule "bundle/vim-ps1"]
-	path = bundle/vim-ps1
+[submodule "pack/all/start/vim-ps1"]
+	path = pack/all/start/vim-ps1
 	url = https://github.com/PProvost/vim-ps1.git
 	branch = master
-[submodule "bundle/vim-dirdiff"]
-	path = bundle/vim-dirdiff
+[submodule "pack/all/start/vim-dirdiff"]
+	path = pack/all/start/vim-dirdiff
 	url = https://github.com/will133/vim-dirdiff.git
 	branch = master
-[submodule "bundle/vim-csharp"]
-	path = bundle/vim-csharp
+[submodule "pack/all/start/vim-csharp"]
+	path = pack/all/start/vim-csharp
 	url = https://github.com/OrangeT/vim-csharp.git
 	branch = master
-[submodule "bundle/vim-mustache-handlebars"]
-	path = bundle/vim-mustache-handlebars
+[submodule "pack/all/start/vim-mustache-handlebars"]
+	path = pack/all/start/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars.git
 	branch = master
-[submodule "bundle/vim-markdown"]
-	path = bundle/vim-markdown
+[submodule "pack/all/start/vim-markdown"]
+	path = pack/all/start/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
 	branch = master
-[submodule "bundle/tsuquyomi"]
-	path = bundle/tsuquyomi
+[submodule "pack/all/start/tsuquyomi"]
+	path = pack/all/start/tsuquyomi
 	url = https://github.com/Quramy/tsuquyomi.git
 	branch = master
-[submodule "bundle/typescript-vim"]
-	path = bundle/typescript-vim
+[submodule "pack/all/start/typescript-vim"]
+	path = pack/all/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
 	branch = master
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
+[submodule "pack/all/start/syntastic"]
+	path = pack/all/start/syntastic
 	url = https://github.com/kevinoid/syntastic.git
 	branch = add-w3-svg-xhtml
-[submodule "bundle/syntastic-detect-checkers"]
-	path = bundle/syntastic-detect-checkers
+[submodule "pack/all/start/syntastic-detect-checkers"]
+	path = pack/all/start/syntastic-detect-checkers
 	url = https://github.com/kevinoid/syntastic-detect-checkers.git
 	branch = master
-[submodule "bundle/syntastic-use-node-bin"]
-	path = bundle/syntastic-use-node-bin
+[submodule "pack/all/start/syntastic-use-node-bin"]
+	path = pack/all/start/syntastic-use-node-bin
 	url = https://github.com/kevinoid/syntastic-use-node-bin.git
 	branch = master

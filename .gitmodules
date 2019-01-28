@@ -60,7 +60,7 @@
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
+	url = https://github.com/kevinoid/syntastic.git
 [submodule "bundle/syntastic-detect-checkers"]
 	path = bundle/syntastic-detect-checkers
 	url = https://github.com/kevinoid/syntastic-detect-checkers.git

@@ -78,15 +78,7 @@
 	path = pack/all/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
 	branch = master
-[submodule "pack/all/start/syntastic"]
-	path = pack/all/start/syntastic
-	url = https://github.com/kevinoid/syntastic.git
-	branch = add-w3-svg-xhtml
-[submodule "pack/all/start/syntastic-detect-checkers"]
-	path = pack/all/start/syntastic-detect-checkers
-	url = https://github.com/kevinoid/syntastic-detect-checkers.git
-	branch = master
-[submodule "pack/all/start/syntastic-use-node-bin"]
-	path = pack/all/start/syntastic-use-node-bin
-	url = https://github.com/kevinoid/syntastic-use-node-bin.git
+[submodule "pack/all/start/ale"]
+	path = pack/all/start/ale
+	url = https://github.com/w0rp/ale.git
 	branch = master

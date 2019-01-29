@@ -94,37 +94,33 @@ let g:markdown_fenced_languages = [
    \ 'yaml'
    \ ]
 
-" Add Syntastic to statusline, simulating default around it
+" Add ALE to statusline, simulating default around it similar to Syntastic
 " https://unix.stackexchange.com/a/243667
+function! LinterStatus() abort
+    let counts = ale#statusline#Count(bufnr(''))
+    let num_errors = counts.error + counts.style_error
+    let num_warnings = counts.warning + counts.style_warning
+    return '[Lint: ' .
+        \ (counts.total == 0 ? 'OK' :
+            \ printf('%dE %dW', num_errors, num_warnings)) .
+        \ ']'
+endfunction
 set statusline=%f\ %h%w%m%r\ 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{LinterStatus()}
 set statusline+=%*
 set statusline+=%=%(%l,%c%V\ %=\ %P%)
 
-" Syntastic configuration
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_wq = 0
-
-" Syntastic checker configuration
-let g:syntastic_html_checkers = ['validator', 'w3']
-let g:syntastic_html_validator_api = 'http://localhost:8888/'
-let g:syntastic_html_w3_api = 'http://localhost/w3c-validator/check'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_closurecompiler_script = 'google-closure-compiler'
-let g:syntastic_sass_checkers = ['sass_lint']
-let g:syntastic_scss_checkers = ['sass_lint']
-let g:syntastic_svg_checkers = ['validator', 'w3']
-let g:syntastic_svg_validator_api = 'http://localhost:8888/'
-let g:syntastic_svg_w3_api = 'http://localhost/w3c-validator/check'
-let g:syntastic_typescript_checkers = ['eslint', 'tsuquyomi']
-let g:syntastic_vim_checkers = ['vimlint', 'vint']
-let g:syntastic_vim_vint_args = '-s'
-let g:syntastic_xhtml_checkers = ['validator', 'w3']
-let g:syntastic_xhtml_validator_api = 'http://localhost:8888/'
-let g:syntastic_xhtml_w3_api = 'http://localhost/w3c-validator/check'
-let g:syntastic_yaml_checkers = ['yamllint']
+" ALE configuration
+" Don't lint files in response to text changes (annoying and excessive)
+let g:ale_lint_on_text_changed = 'never'
+" Show 5 lines of errors (default: 10)
+let g:ale_list_window_size = 5
+" Don't lint minified files
+let g:ale_pattern_options = {
+    \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+    \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+    \ }
 
 if !has('autocmd')
     finish

@@ -6,6 +6,12 @@
 " loaded into a buffer.  It checks if the type of file can be recognized by
 " the file contents.  The autocommand is in $VIMRUNTIME/filetype.vim.
 
+" All current detections in this file were merged in
+" https://github.com/vim/vim/pull/1530, commit 214641f77, release 8.0.0420
+if has('patch-8.0.0420')
+  finish
+endif
+
 " Only do the rest when the FileType autocommand has not been triggered yet.
 if did_filetype()
   finish

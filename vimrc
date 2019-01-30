@@ -112,6 +112,8 @@ set statusline+=%*
 set statusline+=%=%(%l,%c%V\ %=\ %P%)
 
 " ALE configuration
+" Add linter name to messages
+let g:ale_echo_msg_format = '%code%: %s [%linter%]'
 " Don't lint files in response to text changes (annoying and excessive)
 let g:ale_lint_on_text_changed = 'never'
 " Show 5 lines of errors (default: 10)

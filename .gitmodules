@@ -80,8 +80,8 @@
 	branch = master
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = https://github.com/kevinoid/syntastic.git
-	branch = add-w3-svg-xhtml
+	url = https://github.com/vim-syntastic/syntastic.git
+	branch = master
 [submodule "bundle/syntastic-detect-checkers"]
 	path = bundle/syntastic-detect-checkers
 	url = https://github.com/kevinoid/syntastic-detect-checkers.git

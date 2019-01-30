@@ -117,6 +117,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = ['validator', 'w3']
 let g:syntastic_html_validator_api = 'http://localhost:8888/'
 let g:syntastic_html_w3_api = 'http://localhost/w3c-validator/check'
+let g:syntastic_html_w3_doctype = ''
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_closurecompiler_script = 'google-closure-compiler'
 let g:syntastic_sass_checkers = ['sass_lint']
@@ -130,6 +131,7 @@ let g:syntastic_vim_vint_args = '-s'
 let g:syntastic_xhtml_checkers = ['validator', 'w3']
 let g:syntastic_xhtml_validator_api = 'http://localhost:8888/'
 let g:syntastic_xhtml_w3_api = 'http://localhost/w3c-validator/check'
+let g:syntastic_xhtml_w3_doctype = ''
 let g:syntastic_yaml_checkers = ['yamllint']
 
 if !has('autocmd')

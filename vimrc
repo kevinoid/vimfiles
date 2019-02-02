@@ -123,6 +123,8 @@ let g:ale_pattern_options = {
     \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
     \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
     \ }
+" Use binaries inside pipenv, if present
+let g:ale_python_auto_pipenv = 1
 
 if !has('autocmd')
     finish

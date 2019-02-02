@@ -125,6 +125,8 @@ let g:ale_pattern_options = {
     \ }
 " Use binaries inside pipenv, if present
 let g:ale_python_auto_pipenv = 1
+" Disable document-start rule, since I rarely find it useful
+let g:ale_yaml_yamllint_options = "-d 'document-start: disable'"
 
 if !has('autocmd')
     finish

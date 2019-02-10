@@ -125,6 +125,21 @@ let g:ale_pattern_options = {
     \ }
 " Use binaries inside pipenv, if present
 let g:ale_python_auto_pipenv = 1
+" By default, ALE runs vulture on the project root which often includes files
+" which should not be vulture'd (virtualenvs, docs, tests).  Exclude.
+let g:ale_python_vulture_options = '--exclude ' . join([
+    \ '*/site-packages/*',
+    \ '*/.env/*',
+    \ '*/.env[23]/*',
+    \ '*/.tox/*',
+    \ '*/.venv/*',
+    \ '*/docs/*',
+    \ '*/env/*',
+    \ '*/env[23]/*',
+    \ '*/tests/*',
+    \ '*/venv/*',
+    \ '*/venv[23]/*',
+    \ ], ',')
 " Don't pass -s to shellcheck, since it overrides shell directives
 let g:ale_sh_shellcheck_dialect = ''
 " Disable document-start rule, since I rarely find it useful

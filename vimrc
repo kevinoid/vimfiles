@@ -105,6 +105,7 @@ augroup fileTypeIndent
     " https://poshcode.gitbooks.io/powershell-practice-and-style/Style-Guide/Code-Layout-and-Formatting.html#indentation
     autocmd FileType ps1 setlocal sts=4 sw=4 et
     autocmd FileType python setlocal sts=4 sw=4 et
+    autocmd FileType rst setlocal et tw=80
     autocmd FileType {json,javascript,ruby} setlocal sts=2 sw=2 et
     autocmd FileType scala setlocal sts=2 sw=2 et tw=80
     autocmd FileType sh setlocal sts=8 sw=8 noet

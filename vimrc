@@ -125,6 +125,8 @@ let g:ale_pattern_options = {
     \ }
 " Use binaries inside pipenv, if present
 let g:ale_python_auto_pipenv = 1
+" Don't pass -s to shellcheck, since it overrides shell directives
+let g:ale_sh_shellcheck_dialect = ''
 " Disable document-start rule, since I rarely find it useful
 let g:ale_yaml_yamllint_options = "-d 'document-start: disable'"
 

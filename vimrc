@@ -116,6 +116,13 @@ set statusline+=%=%(%l,%c%V\ %=\ %P%)
 let g:ale_echo_msg_format = '%code%: %s [%linter%]'
 " Don't lint files in response to text changes (annoying and excessive)
 let g:ale_lint_on_text_changed = 'never'
+" Set linters for some filetypes
+" sh: shell linter fails on scripts where shopt changes parsing (e.g. extglob).
+"     Could convert shopt to -O options in some cases, but would be fragile.
+"     shellcheck is sufficient for now.
+let g:ale_linters = {
+\   'sh': ['shellcheck']
+\}
 " Show 5 lines of errors (default: 10)
 let g:ale_list_window_size = 5
 " Don't lint minified files

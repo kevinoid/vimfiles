@@ -152,26 +152,47 @@ endif
 augroup fileTypeIndent
     autocmd!
 
+    " Note: b:EditorConfig_applied is true when settings from .editorconfig
+    " have been applied to the buffer.
+    " Defined by after/plugin/editorconfig_applied.vim
+
     " Set bzr commit line length to match git convention of 72
-    autocmd FileType bzr setlocal tw=72
-    autocmd FileType cmake setlocal sts=2 sw=2 et
-    autocmd FileType {css,less,sass,scss} setlocal sts=2 sw=2 et
-    autocmd FileType {html,xhtml,xml,xslt} setlocal sts=2 sw=2 et
-    autocmd FileType {php,c,cpp,java} setlocal sts=4 sw=4 et
-    autocmd FileType lua setlocal sts=8 sw=8
-    autocmd FileType markdown setlocal et tw=78
-    autocmd FileType make setlocal sts=8 sw=8 noet
-    autocmd FileType php setlocal indentexpr= cindent noet ts=4
+    autocmd FileType bzr
+        \ if !get(b:, 'EditorConfig_applied') | setlocal tw=72 | endif
+    autocmd FileType cmake
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
+    autocmd FileType {css,less,sass,scss}
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
+    autocmd FileType {html,xhtml,xml,xslt}
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
+    autocmd FileType {php,c,cpp,java}
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=4 sw=4 et | endif
+    autocmd FileType lua
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=8 sw=8 | endif
+    autocmd FileType markdown
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal et tw=78 | endif
+    autocmd FileType make
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=8 sw=8 noet | endif
+    autocmd FileType php
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal noet ts=4 | endif
     " Note: PS1 indentation size follows PowerShell ISE convention.
     " https://poshcode.gitbooks.io/powershell-practice-and-style/Style-Guide/Code-Layout-and-Formatting.html#indentation
-    autocmd FileType ps1 setlocal sts=4 sw=4 et
-    autocmd FileType python setlocal sts=4 sw=4 et
-    autocmd FileType rst setlocal et tw=80
-    autocmd FileType {json,javascript,ruby} setlocal sts=2 sw=2 et
-    autocmd FileType scala setlocal sts=2 sw=2 et tw=80
-    autocmd FileType sh setlocal sts=8 sw=8 noet
-    autocmd FileType vim setlocal sts=4 sw=4 et
-    autocmd FileType yaml setlocal sts=2 sw=2 et
+    autocmd FileType ps1
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=4 sw=4 et | endif
+    autocmd FileType python
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=4 sw=4 et | endif
+    autocmd FileType rst
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal et tw=80 | endif
+    autocmd FileType {json,javascript,ruby}
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
+    autocmd FileType scala
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et tw=80 | endif
+    autocmd FileType sh
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=8 sw=8 noet | endif
+    autocmd FileType vim
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=4 sw=4 et | endif
+    autocmd FileType yaml
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
 augroup END
 
 augroup fileTypeSettings
@@ -182,6 +203,7 @@ augroup fileTypeSettings
     " Enable spellcheck and expand folds on open
     " https://stackoverflow.com/a/8316817
     autocmd FileType markdown setlocal spell | normal zR
+    autocmd FileType php setlocal indentexpr= cindent
     " Case is rarely significant in PowerShell.  Ignore by default.
     autocmd FileType ps1 setlocal ignorecase
     autocmd FileType scala setlocal fo=croql

@@ -111,6 +111,10 @@ set statusline+=%{LinterStatus()}
 set statusline+=%*
 set statusline+=%=%(%l,%c%V\ %=\ %P%)
 
+" EditorConfig configuration
+" Don't apply EditorConfig to files under .git (especially COMMIT_EDITMSG)
+let g:EditorConfig_exclude_patterns = ['/\.git/']
+
 " ALE configuration
 " Add linter name to messages
 let g:ale_echo_msg_format = '%code%: %s [%linter%]'

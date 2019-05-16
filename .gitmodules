@@ -82,3 +82,7 @@
 	path = pack/all/start/ale
 	url = https://github.com/w0rp/ale.git
 	branch = master
+[submodule "pack/all/start/vim-json"]
+	path = pack/all/start/vim-json
+	url = https://github.com/kevinoid/vim-json.git
+	branch = comment-support

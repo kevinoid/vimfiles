@@ -4,13 +4,16 @@
 " See https://superuser.com/a/120011/141375
 let s:vimhome=expand('<sfile>:p:h')
 
-" Set b:vim_json_comments for JSON files which allow comments
+" Set b:vim_json_comments for JSON files which allow comments and lint with
+" cjsonlint (my custom jsonlint wrapper supporting comments)
 " Note: Must be done before :filetype (in defaults.vim) which runs
 " filetype.vim which calls :autocmd BufRead *.json setf json
 if has('autocmd')
     augroup beforeFileType
         autocmd!
-        autocmd BufRead .eslintrc.json let b:vim_json_comments = 1
+        autocmd BufRead .eslintrc.json
+            \ let b:vim_json_comments = 1
+            \ | let b:ale_json_jsonlint_executable = 'cjsonlint'
     augroup END
 endif
 

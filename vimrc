@@ -62,6 +62,9 @@ filetype indent on
 " Treat /bin/sh as POSIX shell rather than legacy sh
 let g:is_posix=1
 
+" Disable quote concealing in vim-json, which I find confusing
+let g:vim_json_syntax_conceal = 0
+
 " Use 2-space indent for Markdown lists
 " https://github.com/plasticboy/vim-markdown/#adjust-new-list-item-indent
 let g:vim_markdown_new_list_item_indent = 2

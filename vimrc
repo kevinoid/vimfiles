@@ -4,6 +4,16 @@
 " See https://superuser.com/a/120011/141375
 let s:vimhome=expand('<sfile>:p:h')
 
+" Set b:vim_json_comments for JSON files which allow comments
+" Note: Must be done before :filetype (in defaults.vim) which runs
+" filetype.vim which calls :autocmd BufRead *.json setf json
+if has('autocmd')
+    augroup beforeFileType
+        autocmd!
+        autocmd BufRead .eslintrc.json let b:vim_json_comments = 1
+    augroup END
+endif
+
 " Start with system defaults, if they exist (see :help defaults.vim in Vim 8+)
 if !empty(glob($VIMRUNTIME.'/defaults.vim'))
     source $VIMRUNTIME/defaults.vim

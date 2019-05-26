@@ -86,3 +86,7 @@
 	path = pack/all/start/vim-json
 	url = https://github.com/kevinoid/vim-json.git
 	branch = comment-support
+[submodule "pack/all/start/vim-fugitive"]
+	path = pack/all/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+	branch = master

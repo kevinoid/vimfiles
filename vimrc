@@ -134,6 +134,13 @@ let g:EditorConfig_exclude_patterns = ['/\.git/']
 " ALE configuration
 " Add linter name to messages
 let g:ale_echo_msg_format = '%code%: %s [%linter%]'
+" Set fixers for some filetypes
+let g:ale_fixers = {
+\   'go': ['gofmt'],
+\   'javascript': ['eslint'],
+\   'python': ['isort', 'black'],
+\   'sh': ['shfmt'],
+\}
 " Don't lint files in response to text changes (annoying and excessive)
 let g:ale_lint_on_text_changed = 'never'
 " Set linters for some filetypes

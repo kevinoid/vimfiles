@@ -90,3 +90,7 @@
 	path = pack/all/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 	branch = master
+[submodule "pack/all/start/iptables"]
+	path = pack/all/start/iptables
+	url = https://github.com/vim-scripts/iptables.git
+	branch = master

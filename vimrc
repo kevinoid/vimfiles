@@ -262,6 +262,8 @@ augroup pathToFileType
         autocmd BufNewFile,BufRead /etc/systemd/system/*.d/.#*	setf systemd
     endif
 
+    autocmd BufRead /etc/iptables/* set ft=iptables
+
     " Interpret Jekyll files as Liquid rather than Markdown
     " This way the YAML frontmatter and liquid tags are highlighted correctly
     autocmd BufRead */_drafts/*.markdown set ft=liquid

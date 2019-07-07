@@ -137,6 +137,14 @@ augroup pathToFileType
         autocmd BufRead *.md set ft=markdown
     endif
 
+    " Match additional systemd files added in 63b74a8362 (8.1.1048)
+    if !has('patch-8.1.1048')
+        " Systemd overrides
+        autocmd BufNewFile,BufRead /etc/systemd/system/*.d/*.conf	setf systemd
+        " Systemd temp files
+        autocmd BufNewFile,BufRead /etc/systemd/system/*.d/.#*	setf systemd
+    endif
+
     " Interpret Jekyll files as Liquid rather than Markdown
     " This way the YAML frontmatter and liquid tags are highlighted correctly
     autocmd BufRead */_drafts/*.markdown set ft=liquid

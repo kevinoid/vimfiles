@@ -19,6 +19,7 @@ set showmatch          " Show matching brackets.
 set incsearch          " Incremental search
 set history=1000       " Remember what I've done for longer
 set mouse=             " Disable mouse, which I don't often use
+set undofile           " Save undo information for files (:undo-persistence)
 set visualbell	       " Use terminal visual bell in place of beep
 
 " Save swap and backup files in vimhome
@@ -28,6 +29,7 @@ set visualbell	       " Use terminal visual bell in place of beep
 " Web Site Projects) and lots of unnecessary clutter on unclean vim exit.
 let &backupdir=s:vimhome . '/backup/'
 let &directory=s:vimhome . '/swap//'	" // to build swap path from file path
+let &undodir=s:vimhome . '/undo//'	" // to build undo path from file path
 
 " Look for ctags above current directory
 " https://stackoverflow.com/a/741486

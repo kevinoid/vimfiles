@@ -16,6 +16,7 @@ set nofixendofline     " Don't add <EOL> at end of files lacking them
                        " It adds too much churn in version control
 set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.
+set hlsearch           " Highlight search results
 set incsearch          " Incremental search
 set history=1000       " Remember what I've done for longer
 set mouse=             " Disable mouse, which I don't often use

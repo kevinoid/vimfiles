@@ -47,7 +47,10 @@ set tags=./tags,./TAGS,tags,TAGS;/
 " Disable builtin modeline support to avoid securemodelines warning
 set nomodeline
 let g:secure_modelines_verbose=1
-runtime! bundle/securemodelines/plugin/securemodelines.vim
+" If packages are not supported (Vim 7) load manually
+if v:version < 800
+    let &runtimepath .= ',' . s:vimhome . '/pack/all/start/securemodelines/after'
+endif
 
 " Use ripgrep or silver searcher for grep when available
 if executable('rg')

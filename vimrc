@@ -16,10 +16,19 @@ set nofixendofline     " Don't add <EOL> at end of files lacking them
                        " It adds too much churn in version control
 set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.
+set hlsearch           " Highlight search results
 set incsearch          " Incremental search
 set history=1000       " Remember what I've done for longer
 set mouse=             " Disable mouse, which I don't often use
+set undofile           " Save undo information for files (:undo-persistence)
 set visualbell	       " Use terminal visual bell in place of beep
+
+" quickfix shortcuts
+" https://begriffs.com/posts/2019-07-19-history-use-vim.html#edit-compile-cycle
+nmap ]q :cnext<cr>
+nmap ]Q :clast<cr>
+nmap [q :cprev<cr>
+nmap [Q :cfirst<cr>
 
 " Save swap and backup files in vimhome
 " Saving alongside the edited file allows sharing between users, but has more
@@ -28,6 +37,7 @@ set visualbell	       " Use terminal visual bell in place of beep
 " Web Site Projects) and lots of unnecessary clutter on unclean vim exit.
 let &backupdir=s:vimhome . '/backup/'
 let &directory=s:vimhome . '/swap//'	" // to build swap path from file path
+let &undodir=s:vimhome . '/undo//'	" // to build undo path from file path
 
 " Look for ctags above current directory
 " https://stackoverflow.com/a/741486

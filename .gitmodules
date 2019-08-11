@@ -84,8 +84,8 @@
 	branch = master
 [submodule "pack/all/start/vim-json"]
 	path = pack/all/start/vim-json
-	url = https://github.com/kevinoid/vim-json.git
-	branch = comment-support
+	url = https://github.com/elzr/vim-json.git
+	branch = master
 [submodule "pack/all/start/vim-fugitive"]
 	path = pack/all/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -93,4 +93,8 @@
 [submodule "pack/all/start/iptables"]
 	path = pack/all/start/iptables
 	url = https://github.com/vim-scripts/iptables.git
+	branch = master
+[submodule "pack/all/start/vim-jsonc"]
+	path = pack/all/start/vim-jsonc
+	url = https://github.com/kevinoid/vim-jsonc.git
 	branch = master

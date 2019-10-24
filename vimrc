@@ -9,6 +9,13 @@ if !empty(glob($VIMRUNTIME.'/defaults.vim'))
     source $VIMRUNTIME/defaults.vim
 endif
 
+if has('win32')
+    " Force UTF-8 on Windows, since $LANG and terminal detection is unreliable
+    " UTF-8 works better than latin1 in cmd.exe and gVim for me
+    " See https://unix.stackexchange.com/a/23414
+    set encoding=utf-8
+endif
+
 set background=dark    " Set highlighting for dark background
 colorscheme defaultish " Use a modified default colorscheme
 syntax on              " Turn on syntax hilighting

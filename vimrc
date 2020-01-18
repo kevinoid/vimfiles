@@ -79,6 +79,9 @@ filetype indent on
 " Treat /bin/sh as POSIX shell rather than legacy sh
 let g:is_posix=1
 
+" Enable JSDoc highlighting in JavaScript
+let g:javascript_plugin_jsdoc = 1
+
 " Disable quote concealing in vim-json, which I find confusing
 let g:vim_json_syntax_conceal = 0
 

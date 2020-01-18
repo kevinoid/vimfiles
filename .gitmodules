@@ -102,3 +102,7 @@
 	path = pack/all/start/vader.vim
 	url = https://github.com/junegunn/vader.vim.git
 	branch = master
+[submodule "pack/all/start/vim-javascript"]
+	path = pack/all/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+	branch = master

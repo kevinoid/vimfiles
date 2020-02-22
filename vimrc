@@ -241,9 +241,6 @@ augroup fileTypeSettings
 
     " Disable reindenting on keystrokes other than CTRL-F and new lines (annoying)
     autocmd FileType {html,xhtml,xml,xslt,yaml} setlocal indentkeys=!^F,o,O
-    " Enable spellcheck and expand folds on open
-    " https://stackoverflow.com/a/8316817
-    autocmd FileType markdown setlocal spell | normal zR
     autocmd FileType php setlocal indentexpr= cindent
     " Case is rarely significant in PowerShell.  Ignore by default.
     autocmd FileType ps1 setlocal ignorecase

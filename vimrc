@@ -85,6 +85,11 @@ let g:javascript_plugin_jsdoc = 1
 " Disable quote concealing in vim-json, which I find confusing
 let g:vim_json_syntax_conceal = 0
 
+" Disable folding provided by vim-markdown, which has serious issues:
+" https://github.com/plasticboy/vim-markdown/issues/427
+" https://github.com/plasticboy/vim-markdown/issues/455
+let g:vim_markdown_folding_disabled = 1
+
 " Use 2-space indent for Markdown lists
 " https://github.com/plasticboy/vim-markdown/#adjust-new-list-item-indent
 let g:vim_markdown_new_list_item_indent = 2

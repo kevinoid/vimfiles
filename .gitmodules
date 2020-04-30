@@ -114,3 +114,7 @@
 	path = pack/all/start/vim-vimlint
 	url = https://github.com/syngan/vim-vimlint.git
 	branch = master
+[submodule "pack/all/start/vim-wl-clip"]
+	path = pack/all/start/vim-wl-clip
+	url = https://gitlab.com/kevinoid/vim-wl-clip.git
+	branch = master

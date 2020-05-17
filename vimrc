@@ -79,6 +79,10 @@ filetype indent on
 " Treat /bin/sh as POSIX shell rather than legacy sh
 let g:is_posix=1
 
+" Use fakeclip for Wayland, when wl-copy is available
+let g:fakeclip_provide_clipboard_key_mappings =
+\ !empty($WAYLAND_DISPLAY) && executable('wl-copy')
+
 " Enable JSDoc highlighting in JavaScript
 let g:javascript_plugin_jsdoc = 1
 

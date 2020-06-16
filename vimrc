@@ -72,16 +72,36 @@ elseif executable('ag')
     set grepformat=%f:%l:%c:%m
 end
 
+" Clipboard handling
+if has('nvim')
+    " Neovim clipboard provider for Wayland which strips carriage returns.
+    " See https://gitlab.gnome.org/GNOME/gtk/-/issues/2307
+    " See https://bugzilla.mozilla.org/1572104
+    " From https://github.com/neovim/neovim/issues/10223#issuecomment-521952122
+    let g:clipboard = {
+    \   'name': 'wayland-strip-carriage',
+    \   'copy': {
+    \      '+': 'wl-copy --foreground --type text/plain',
+    \      '*': 'wl-copy --foreground --type text/plain --primary',
+    \    },
+    \   'paste': {
+    \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
+    \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+    \   },
+    \   'cache_enabled': 1,
+    \ }
+else
+    " Use fakeclip for Vim on Wayland, when wl-copy is available
+    let g:fakeclip_provide_clipboard_key_mappings =
+    \ !empty($WAYLAND_DISPLAY) && executable('wl-copy')
+endif
+
 " Turn on indenting
 set softtabstop=4 shiftwidth=4
 filetype indent on
 
 " Treat /bin/sh as POSIX shell rather than legacy sh
 let g:is_posix=1
-
-" Use fakeclip for Wayland, when wl-copy is available
-let g:fakeclip_provide_clipboard_key_mappings =
-\ !empty($WAYLAND_DISPLAY) && executable('wl-copy')
 
 " Enable JSDoc highlighting in JavaScript
 let g:javascript_plugin_jsdoc = 1

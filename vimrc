@@ -32,10 +32,10 @@ set visualbell	       " Use terminal visual bell in place of beep
 
 " quickfix shortcuts
 " https://begriffs.com/posts/2019-07-19-history-use-vim.html#edit-compile-cycle
-nmap ]q :cnext<cr>
-nmap ]Q :clast<cr>
-nmap [q :cprev<cr>
-nmap [Q :cfirst<cr>
+nmap ]q :lnext<cr>
+nmap ]Q :llast<cr>
+nmap [q :lprev<cr>
+nmap [Q :lfirst<cr>
 
 " Save swap and backup files in vimhome
 " Saving alongside the edited file allows sharing between users, but has more

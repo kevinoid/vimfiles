@@ -176,6 +176,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['isort', 'black'],
 \   'sh': ['shfmt'],
+\   'xml': ['xmllint'],
 \}
 " Check for unused disable directives when running ESLint
 let g:ale_javascript_eslint_options = '--report-unused-disable-directives'

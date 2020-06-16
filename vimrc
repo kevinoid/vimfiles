@@ -182,6 +182,11 @@ let g:ale_fixers = {
 let g:ale_javascript_eslint_options = '--report-unused-disable-directives'
 " Don't lint files in response to text changes (annoying and excessive)
 let g:ale_lint_on_text_changed = 'never'
+" Add missing linter aliases
+" ps1: See https://github.com/dense-analysis/ale/pull/3010
+let g:ale_linter_aliases = {
+\   'ps1': 'powershell',
+\}
 " Set linters for some filetypes
 " sh: shell linter fails on scripts where shopt changes parsing (e.g. extglob).
 "     Could convert shopt to -O options in some cases, but would be fragile.

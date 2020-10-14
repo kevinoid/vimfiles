@@ -57,6 +57,7 @@ elseif has('nvim')
             endif
             return []
         endif
+
         return split(output, "\r\\?\n", 1)
     endfunction
 

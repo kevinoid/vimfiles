@@ -11,6 +11,24 @@ set cpoptions&vim
 if empty($WAYLAND_DISPLAY) || !executable('wl-copy')
     " Not in Wayland or wl-copy not available, leave clipboard handling alone.
 elseif has('nvim')
+    " Configure Neovim clipboard provider for Wayland
+
+    " Ensure carriage returns are present in clipboard so that line breaks
+    " are pasted in Gecko-based programs (e.g. Firefox and Thunderbird)
+    function! s:wl_copy(lines, args)
+        let content = join(a:lines, "\r\n")
+        " Normalize CR-LF in case buffer has CR characters at the end of lines
+        " (e.g. due to mismatched line endings)
+        let content = substitute(content, '\r\r\n', '\r\n', 'g')
+        let output = system('wl-copy --type text/plain ' . a:args, content)
+        if v:shell_error
+            " echoerr would throw, so use echohl to highlight
+            echohl ErrorMsg
+            echom 'wl-copy: ' . trim(output)
+            echohl None
+        endif
+    endfunction
+
     " Neovim clipboard provider for Wayland which strips carriage returns.
     " and handles wl-paste errors (like "No selection" when empty)
     " See https://gitlab.gnome.org/GNOME/gtk/-/issues/2307
@@ -45,8 +63,8 @@ elseif has('nvim')
     let g:clipboard = {
     \   'name': 'wayland-strip-carriage',
     \   'copy': {
-    \      '+': 'wl-copy --foreground --type text/plain',
-    \      '*': 'wl-copy --foreground --type text/plain --primary',
+    \      '+': {lines, regtype -> s:wl_copy(lines, '')},
+    \      '*': {lines, regtype -> s:wl_copy(lines, '--primary')},
     \    },
     \   'paste': {
     \      '+': {-> s:wl_paste('')},

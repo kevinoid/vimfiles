@@ -21,6 +21,13 @@ elseif has('nvim')
         " If some programs don't produce UTF8_STRING, open wl-clipboard
         " issue requesting support for multiple -t options.
         let output = system('wl-paste -t UTF8_STRING --no-newline '.a:args)
+
+        " If paste failed due to lack of UTF8_STRING, retry with any type
+        if v:shell_error
+        \ && trim(output) ==# 'No suitable type of content copied'
+            let output = system('wl-paste --no-newline '.a:args)
+        endif
+
         if v:shell_error
             let output = trim(output)
             " 'Nothing in register +' sufficient for 'No selection'

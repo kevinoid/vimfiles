@@ -215,6 +215,8 @@ augroup fileTypeIndent
         \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
     autocmd FileType {css,less,sass,scss}
         \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
+    autocmd FileType gitconfig
+        \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=8 sw=8 | endif
     autocmd FileType {html,xhtml,xml,xslt}
         \ if !get(b:, 'EditorConfig_applied') |  setlocal sts=2 sw=2 et | endif
     autocmd FileType {php,c,cpp,java}
